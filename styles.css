@@ -13,15 +13,17 @@
 }
 
 #main-container h1 {
-    font-size: 40px;
+    font-size: 25px;
     font-weight: bold;
     text-align: center;
     word-spacing: 10px;
     letter-spacing: 4px;
+    margin: 50px auto;
 }
 
 .main-content {
     display: flex;
+    justify-content: space-evenly;
     align-items: center;
 }
 
@@ -90,10 +92,6 @@
 }
 
 @media (max-width:1750px) {
-    .main-content {
-        justify-content: space-evenly;
-    }
-
     .main-content .map img {
         width: 800px;
     }

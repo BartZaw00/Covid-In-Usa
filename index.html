@@ -42,29 +42,28 @@
             <div class="content">
                 <div class="content-date">
                     <h2>PICK DATE:</h2>
-                    <input type="date" value="2022-04-28" min="2020-01-22" name="filtrowanie_daty"
-                        id="filtrowanie_daty">
+                    <input data-date-filter type="date" value="2022-04-28" min="2020-01-22">
                 </div>
                 <div class="border"></div>
                 <div class="content-info">
-                    <p>Date: <span id="time_period"></span></p>
-                    <p style="color: rgb(140,15,15);">Number of Infections (Daily): <span id="number_of_infected_daily"
+                    <p>Date: <span data-time-period></span></p>
+                    <p style="color: rgb(140,15,15);">Number of Infections (Daily): <span data-daily-infected
                             style="color: rgb(140,15,15);"></span></p>
-                    <p style="color: rgb(40,15,215);">Number of Deaths (Daily): <span id="number_of_dead_daily"
+                    <p style="color: rgb(40,15,215);">Number of Deaths (Daily): <span data-daily-deaths
                             style="color: rgb(40,15,215);"></span></p>
-                    <p style="color: rgb(140,15,15);">Number of Infections (Total): <span id="number_of_infected"
+                    <p style="color: rgb(140,15,15);">Number of Infections (Total): <span data-infected
                             style="color: rgb(140,15,15);"></span></p>
-                    <p style="color: rgb(40,15,215);">Number of Deaths (Total): <span id="number_of_dead"
+                    <p style="color: rgb(40,15,215);">Number of Deaths (Total): <span data-deaths
                             style="color: rgb(40,15,215);"></span></p>
                 </div>
             </div>
         </div>
         <div class="tooltip">
             <ul>
-                <li>State: <span id="state_name"></span></li>
-                <li style="color: rgb(140,15,15);">New Cases: <span id="new_cases"
+                <li>State: <span data-state-name></span></li>
+                <li style="color: rgb(140,15,15);">New Cases: <span data-new-cases
                         style="color: rgb(140,15,15);"></span></li>
-                <li style="color: rgb(40,15,215);">New Deaths: <span id="new_deaths"
+                <li style="color: rgb(40,15,215);">New Deaths: <span data-new-deaths
                         style="color: rgb(40,15,215);"></span></li>
             </ul>
         </div>
