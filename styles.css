@@ -18,7 +18,7 @@
     text-align: center;
     word-spacing: 10px;
     letter-spacing: 4px;
-    margin: 50px auto;
+    padding: 50px;
 }
 
 .main-content {
@@ -86,10 +86,18 @@
 }
 
 #credits {
+    color: rgb(0, 0, 0);
     position: fixed;
     right: 10px;
     bottom: 10px;
+    text-decoration: none;
+    cursor: pointer;
 }
+
+#credits span {
+    color: rgb(238, 105, 28)
+}
+
 
 @media (max-width:1750px) {
     .main-content .map img {
