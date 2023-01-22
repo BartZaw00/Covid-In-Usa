@@ -1,0 +1,90 @@
+*,
+::after,
+::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#main-container {
+    height: 100vh;
+    background-image: url("images/covid.png");
+}
+
+#main-container h1 {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    word-spacing: 10px;
+    letter-spacing: 4px;
+}
+
+.main-content {
+    display: flex;
+    align-items: center;
+}
+
+.main-content .content {
+    height: 500px;
+    width: 800px;
+    border: 10px solid black;
+    border-radius: 20px;
+    background-color: rgba(240, 195, 73, 0.7);
+    font-size: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.content .content-date {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    padding: 20px;
+}
+
+.content .border {
+    border-bottom: 10px solid black;
+}
+
+.content .content-info {
+    padding-left: 20px;
+    font-weight: bold;
+}
+
+.content .content-info p {
+    padding-top: 15px;
+}
+
+.legend {
+    margin-left: 10px;
+}
+
+.legend .legend-scale ul {
+    display: flex;
+}
+
+.legend .legend-scale ul li {
+    display: flex;
+    flex-direction: column;
+    width: 85px;
+    height: 30px;
+    border: 1px solid rgb(0, 0, 0);
+    text-align: center;
+    font-size: 10px;
+}
+
+.legend ul li span {
+    height: 50%;
+    width: 100%;
+}
+
+.tooltip {
+    display: none;
+}
+
+#credits {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
