@@ -17,12 +17,13 @@ const stateName = document.querySelector('[data-state-name]');
 const newCases = document.querySelector('[data-new-cases]');
 const newDeaths = document.querySelector('[data-new-deaths]');
 
-let dateInAPI = '';
 let dataFromAPI;
-let topElementPosition = '';
-let leftElementPosition = '';
+let dateInAPI;
 let dateValue;
 let dateTyped;
+
+let statePositionTop;
+let statePositionLeft;
 
 let sumTotCases = 0;
 let sumTotDeaths = 0;
@@ -66,6 +67,9 @@ function showUsaData() {
     deaths.textContent = sumTotDeaths;
 }
 
+
+
+
 window.addEventListener('load', () => {
     API_CALL(URL);
     dateValue = dateFilter.value;
@@ -77,4 +81,20 @@ dateFilter.addEventListener("input", () => {
     showUsaData();
 });
 
+
+
+map.addEventListener("mouseover", (event) => {
+    if (event.target.id !== 'svg') {
+        tooltip.style.top = (event.target.getBoundingClientRect().top - 20) + 'px';
+        tooltip.style.left = (event.target.getBoundingClientRect().right + 20) + 'px';
+        tooltip.classList.add('tooltip-display');
+        //showData(event.target.id)
+    }
+});
+
+
+
+map.addEventListener('mouseout', () => {
+    tooltip.classList.remove('tooltip-display');
+})
 
