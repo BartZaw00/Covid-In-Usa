@@ -7,9 +7,9 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-#main-container {
-    height: 100vh;
+body {
     background-image: url("images/covid.png");
+    padding: 0 50px;
 }
 
 #main-container h1 {
@@ -27,13 +27,16 @@
     align-items: center;
 }
 
+.main-content .map {
+    flex: 1;
+}
+
 .main-content .content {
-    height: 500px;
-    width: 800px;
+    flex: 1;
     border: 10px solid black;
     border-radius: 20px;
     background-color: rgba(240, 195, 73, 0.7);
-    font-size: 40px;
+    font-size: 35px;
     display: flex;
     flex-direction: column;
 }
@@ -47,6 +50,7 @@
 
 .content .border {
     border-bottom: 10px solid black;
+    margin-bottom: 20px;
 }
 
 .content .content-info {
@@ -55,7 +59,7 @@
 }
 
 .content .content-info p {
-    padding-top: 15px;
+    padding-bottom: 25px;
 }
 
 .legend {
@@ -71,6 +75,7 @@
     flex-direction: column;
     width: 85px;
     height: 30px;
+    background-color: white;
     border: 1px solid rgb(0, 0, 0);
     text-align: center;
     font-size: 10px;
@@ -86,48 +91,46 @@
 }
 
 #credits {
+    display: block;
+    text-align: right;
+    margin-top: 120px;
     color: rgb(0, 0, 0);
-    position: fixed;
-    right: 10px;
-    bottom: 10px;
     text-decoration: none;
     cursor: pointer;
 }
 
-#credits span {
-    color: rgb(238, 105, 28)
+#credits:hover span {
+    color: rgb(177, 85, 32)
 }
 
 
 @media (max-width:1750px) {
-    .main-content .map img {
-        width: 800px;
-    }
-
     .legend .legend-scale ul li {
         width: 70px;
         font-size: 8px;
     }
 
     .main-content .content {
-        font-size: 35px;
+        font-size: 30px;
+    }
+
+    .content .content-info p {
+        padding-top: 30px;
     }
 }
 
 @media (max-width:1550px) {
-    .main-content .map img {
-        width: 700px;
-    }
-
     .legend .legend-scale ul li {
         width: 60px;
         font-size: 7px;
     }
 
     .main-content .content {
-        height: 450px;
-        width: 650px;
-        font-size: 30px;
+        font-size: 25px;
+    }
+
+    .content .content-info p {
+        padding-top: 30px;
     }
 }
 
@@ -149,26 +152,17 @@
         align-items: center;
     }
 
-    .main-content .map img {
-        width: 100%;
-    }
-
     .main-content .content {
         width: 60%;
     }
 
     #credits {
         position: relative;
-        margin: 30px;
+        padding: 50px;
     }
 }
 
 @media (max-width:1050px) {
-
-    .main-content .map {
-        width: 90%;
-    }
-
     .main-content .content {
         width: 80%;
         height: 350px;
