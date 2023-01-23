@@ -31,8 +31,6 @@ let sumNewCases = 0;
 let sumNewDeaths = 0;
 
 
-console.log(states[2])
-
 async function API_CALL(url) {
     await fetch(url)
         .then(response => response.json())
@@ -43,10 +41,11 @@ async function API_CALL(url) {
 }
 
 function showUsaData() {
-    sumTotCases = 0;
-    sumTotDeaths = 0;
     sumNewCases = 0;
     sumNewDeaths = 0;
+    sumTotCases = 0;
+    sumTotDeaths = 0;
+
     dateTyped = new Date(dateValue);
 
     dataFromAPI.forEach((element) => {
@@ -73,61 +72,67 @@ function showUsaData() {
 
 function showTooltipData(stateHovered) {
     let i = 0;
+    let noData = true;
     for (i = 0; i < dataFromAPI.length; i++) {
         dateInAPI = new Date(dataFromAPI[i].submission_date);
         if (dateTyped.getYear() === dateInAPI.getYear())
             if (dateTyped.getMonth() == dateInAPI.getMonth())
                 if (dateTyped.getDate() == dateInAPI.getDate())
-                    if (stateHovered.toUpperCase() == dataFromAPI[i].state)
+                    if (stateHovered.toUpperCase() == dataFromAPI[i].state) {
+                        noData = false;
                         break;
+                    }
     }
 
+    if (noData) {
+        newCases.textContent = 0;
+        newDeaths.textContent = 0;
+    }
 
-    newCases.textContent = Number(dataFromAPI[i].new_case);
-    newDeaths.textContent = Number(dataFromAPI[i].new_death);
+    else {
+        newCases.textContent = Number(dataFromAPI[i].new_case);
+        newDeaths.textContent = Number(dataFromAPI[i].new_death);
+    }
 }
 
 function changeSvgColor(elementFromApi) {
     for (i = 0; i <= 50; i++) {
         if (elementFromApi.state.toUpperCase() == states[i].id.toUpperCase()) {
-            if (elementFromApi.new_case > 100001) {
-                states[i].classList.toggle('map-fill-12');
+            if (elementFromApi.new_case > 100000) {
+                states[i].style.fill = 'rgb(90, 10, 10)';
             }
-            else if (elementFromApi.new_case > 50001) {
-                states[i].classList.toggle('map-fill-11');
+            else if (elementFromApi.new_case > 50000) {
+                states[i].style.fill = 'rgb(110, 10, 10)';
             }
-            else if (elementFromApi.new_case > 25001) {
-                states[i].classList.toggle('map-fill-10');
+            else if (elementFromApi.new_case > 25000) {
+                states[i].style.fill = 'rgb(130, 20, 20)';
             }
-            else if (elementFromApi.new_case > 5001) {
-                states[i].classList.toggle('map-fill-9');
+            else if (elementFromApi.new_case > 5000) {
+                states[i].style.fill = 'rgb(150, 30, 30)';
             }
-            else if (elementFromApi.new_case > 2001) {
-                states[i].classList.toggle('map-fill-8');
+            else if (elementFromApi.new_case > 2000) {
+                states[i].style.fill = 'rgb(170, 40, 40)';
             }
-            else if (elementFromApi.new_case > 1201) {
-                states[i].classList.toggle('map-fill-7');
+            else if (elementFromApi.new_case > 1200) {
+                states[i].style.fill = 'rgb(200, 50, 50)';
             }
-            else if (elementFromApi.new_case > 901) {
-                states[i].classList.toggle('map-fill-6');
+            else if (elementFromApi.new_case > 900) {
+                states[i].style.fill = 'rgb(230, 80, 80)';
             }
-            else if (elementFromApi.new_case > 601) {
-                states[i].classList.toggle('map-fill-5');
+            else if (elementFromApi.new_case > 600) {
+                states[i].style.fill = 'rgb(245, 105, 105)';
             }
-            else if (elementFromApi.new_case > 301) {
-                states[i].classList.toggle('map-fill-4');
+            else if (elementFromApi.new_case > 300) {
+                states[i].style.fill = 'rgb(255, 130, 130)';
             }
-            else if (elementFromApi.new_case > 101) {
-                states[i].classList.toggle('map-fill-3');
+            else if (elementFromApi.new_case > 50) {
+                states[i].style.fill = 'rgb(255, 160, 160)';
             }
-            else if (elementFromApi.new_case > 31) {
-                states[i].classList.toggle('map-fill-2');
-            }
-            else if (elementFromApi.new_case >= 0) {
-                states[i].classList.toggle('map-fill-1');
+            else if (elementFromApi.new_case > 0) {
+                states[i].style.fill = 'rgb(255, 180, 180)';
             }
             else {
-                states[i].classList.toggle('map-fill-0');
+                states[i].style.fill = 'grey';
             }
             break;
         }
@@ -136,16 +141,17 @@ function changeSvgColor(elementFromApi) {
 
 
 window.addEventListener('load', () => {
-    API_CALL(URL);
     dateValue = dateFilter.value;
+    API_CALL(URL);
 });
 
 
 dateFilter.addEventListener("input", () => {
     dateValue = dateFilter.value;
+    for (i = 0; i <= 50; i++)
+        states[i].style.fill = 'grey';
     showUsaData();
 });
-
 
 
 map.addEventListener("mouseover", (event) => {
@@ -157,7 +163,6 @@ map.addEventListener("mouseover", (event) => {
         showTooltipData(event.target.id);
     }
 });
-
 
 
 map.addEventListener('mouseout', () => {
