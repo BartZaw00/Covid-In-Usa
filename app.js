@@ -30,6 +30,9 @@ let sumTotDeaths = 0;
 let sumNewCases = 0;
 let sumNewDeaths = 0;
 
+
+console.log(states[2])
+
 async function API_CALL(url) {
     await fetch(url)
         .then(response => response.json())
@@ -51,6 +54,7 @@ function showUsaData() {
         if (dateTyped.getYear() === dateInAPI.getYear()) {
             if (dateTyped.getMonth() == dateInAPI.getMonth()) {
                 if (dateTyped.getDate() == dateInAPI.getDate()) {
+                    changeSvgColor(element);
                     sumNewCases += Number(element.new_case);
                     sumNewDeaths += Number(element.new_death);
                     sumTotCases += Number(element.tot_cases);
@@ -68,7 +72,8 @@ function showUsaData() {
 }
 
 function showTooltipData(stateHovered) {
-    for (i in dataFromAPI) {
+    let i = 0;
+    for (i = 0; i < dataFromAPI.length; i++) {
         dateInAPI = new Date(dataFromAPI[i].submission_date);
         if (dateTyped.getYear() === dateInAPI.getYear())
             if (dateTyped.getMonth() == dateInAPI.getMonth())
@@ -80,6 +85,53 @@ function showTooltipData(stateHovered) {
 
     newCases.textContent = Number(dataFromAPI[i].new_case);
     newDeaths.textContent = Number(dataFromAPI[i].new_death);
+}
+
+function changeSvgColor(elementFromApi) {
+    for (i = 0; i <= 50; i++) {
+        if (elementFromApi.state.toUpperCase() == states[i].id.toUpperCase()) {
+            if (elementFromApi.new_case > 100001) {
+                states[i].classList.toggle('map-fill-12');
+            }
+            else if (elementFromApi.new_case > 50001) {
+                states[i].classList.toggle('map-fill-11');
+            }
+            else if (elementFromApi.new_case > 25001) {
+                states[i].classList.toggle('map-fill-10');
+            }
+            else if (elementFromApi.new_case > 5001) {
+                states[i].classList.toggle('map-fill-9');
+            }
+            else if (elementFromApi.new_case > 2001) {
+                states[i].classList.toggle('map-fill-8');
+            }
+            else if (elementFromApi.new_case > 1201) {
+                states[i].classList.toggle('map-fill-7');
+            }
+            else if (elementFromApi.new_case > 901) {
+                states[i].classList.toggle('map-fill-6');
+            }
+            else if (elementFromApi.new_case > 601) {
+                states[i].classList.toggle('map-fill-5');
+            }
+            else if (elementFromApi.new_case > 301) {
+                states[i].classList.toggle('map-fill-4');
+            }
+            else if (elementFromApi.new_case > 101) {
+                states[i].classList.toggle('map-fill-3');
+            }
+            else if (elementFromApi.new_case > 31) {
+                states[i].classList.toggle('map-fill-2');
+            }
+            else if (elementFromApi.new_case >= 0) {
+                states[i].classList.toggle('map-fill-1');
+            }
+            else {
+                states[i].classList.toggle('map-fill-0');
+            }
+            break;
+        }
+    }
 }
 
 
