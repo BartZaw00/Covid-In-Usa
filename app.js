@@ -67,7 +67,20 @@ function showUsaData() {
     deaths.textContent = sumTotDeaths;
 }
 
+function showTooltipData(stateHovered) {
+    for (i in dataFromAPI) {
+        dateInAPI = new Date(dataFromAPI[i].submission_date);
+        if (dateTyped.getYear() === dateInAPI.getYear())
+            if (dateTyped.getMonth() == dateInAPI.getMonth())
+                if (dateTyped.getDate() == dateInAPI.getDate())
+                    if (stateHovered.toUpperCase() == dataFromAPI[i].state)
+                        break;
+    }
 
+
+    newCases.textContent = Number(dataFromAPI[i].new_case);
+    newDeaths.textContent = Number(dataFromAPI[i].new_death);
+}
 
 
 window.addEventListener('load', () => {
@@ -88,7 +101,8 @@ map.addEventListener("mouseover", (event) => {
         tooltip.style.top = (event.target.getBoundingClientRect().top - 20) + 'px';
         tooltip.style.left = (event.target.getBoundingClientRect().right + 20) + 'px';
         tooltip.classList.add('tooltip-display');
-        //showData(event.target.id)
+        stateName.textContent = event.target.getAttribute('name');
+        showTooltipData(event.target.id);
     }
 });
 
