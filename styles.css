@@ -114,6 +114,21 @@ header h1 {
     padding: 20px;
 }
 
+input[type="date"] {
+    border: none;
+    outline: none;
+    border-radius: 15px;
+}
+
+::-webkit-datetime-edit {
+    font-size: 25px;
+    padding: 8px 15px;
+}
+
+::-webkit-calendar-picker-indicator {
+    font-size: 20px;
+}
+
 .content .border {
     border-bottom: 10px solid black;
     margin-bottom: 20px;
@@ -126,6 +141,14 @@ header h1 {
 
 .content .content-info p {
     padding-bottom: 25px;
+}
+
+.content-color1 {
+    color: rgb(140, 15, 15);
+}
+
+.content-color2 {
+    color: rgb(40, 15, 215);
 }
 
 .legend {
@@ -266,5 +289,13 @@ header h1 {
     .main-content .content {
         height: 300px;
         font-size: 15px;
+    }
+
+    ::-webkit-datetime-edit {
+        font-size: 13px;
+    }
+
+    ::-webkit-calendar-picker-indicator {
+        font-size: 13px;
     }
 }
