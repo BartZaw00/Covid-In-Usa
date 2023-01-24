@@ -126,6 +126,7 @@ input[type="date"] {
 }
 
 ::-webkit-calendar-picker-indicator {
+    width: 40px;
     font-size: 20px;
 }
 
@@ -269,7 +270,7 @@ input[type="date"] {
 
 @media (max-width:1050px) {
     .main-content .content {
-        width: 80%;
+        width: 90%;
         height: 350px;
         font-size: 20px;
     }
@@ -296,6 +297,6 @@ input[type="date"] {
     }
 
     ::-webkit-calendar-picker-indicator {
-        font-size: 13px;
+        font-size: 15px;
     }
 }
